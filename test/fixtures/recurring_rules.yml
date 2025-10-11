@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: Rent
+  amount: 2000
+  kind: Fixed Expense
+  month_day: 5
