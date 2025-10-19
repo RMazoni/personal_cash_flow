@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_11_205028) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_14_104330) do
   create_table "preferences", force: :cascade do |t|
     t.decimal "daily_expense_estimate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "initial_balance"
   end
 
   create_table "recurring_rules", force: :cascade do |t|

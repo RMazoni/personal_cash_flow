@@ -1,6 +1,6 @@
 # Fluxo de Caixa Pessoal com Projeção
 
-Um app simples e prático para organizar suas finanças, visualizar seu saldo acumulado dia a dia e projetar seu fluxo de caixa para os próximos 12 meses — ajudando você a tomar decisões financeiras mais conscientes **hoje**.
+Um app simples e prático para organizar suas finanças, visualizar seu saldo acumulado dia a dia e projetar seu fluxo de caixa, ajudando você a tomar decisões financeiras mais conscientes **hoje**.
 
 ## 💡 Propósito
 
@@ -19,20 +19,18 @@ Tudo em uma única visão: **uma linha do tempo de dias com saldo acumulado**.
 - Para cada dia:
   - Mostra transações lançadas (receitas, despesas fixas, gastos diários)
   - Exibe o **saldo acumulado até aquele dia**
-  - Se não houver gasto diário real, mostra uma **projeção com base na estimativa diária**
+  - Se não houver gasto diário real, mostra uma **projeção com base na estimativa diária** (válido para dias **futuros**, envidentemente).
 - Clique em qualquer dia para adicionar ou editar transações
 
 ### ⚙️ Página de Configurações
 - Define sua **estimativa diária de gastos variáveis** (ex: R$60/dia)
 - Gerencia **regras recorrentes**:
-  - Ex: “Aluguel – R$1750 – todo dia 5”
-  - Ao salvar uma regra, o sistema gera automaticamente transações para os próximos 12 meses
+  - Ex: “Aluguel – R$1750 – todo dia 5”, "Salário - R$5000 - todo dia 01"
 
 ### 📊 Lógica de cálculo
-- **Saldo do dia** = saldo do dia anterior + soma das transações do dia
+- **Saldo acumulado** = saldo do dia anterior + soma das transações do dia
 - Receitas (`income`) **aumentam** o saldo
 - Despesas (`fixed_expense`, `daily_expense`) **diminuem** o saldo
-- Valores são armazenados sempre como **positivos**; o tipo define o impacto
 
 ## 🗃️ Modelos principais
 
@@ -45,14 +43,14 @@ Tudo em uma única visão: **uma linha do tempo de dias com saldo acumulado**.
 - **`RecurringRule`**
   - `description`
   - `amount`
-  - `kind`
-  - `day_of_month`
+  - `kind`: `fixed_income` | `fixed_expense`
+  - `month_day`
 
-- **`Setting`**
+- **`Preference`**
   - `daily_expense_estimate` (ex: 60.0)
 
 ## 🎯 Princípios do projeto
 
 - **Simplicidade primeiro**: nada de categorias, orçamentos ou gráficos complexos no início
-- **Projeção útil**: o futuro é preenchido com dados realistas, não com planilhas abstratas
+- **Projeção útil**: o futuro é projetado de forma simples e objetiva, facilitando a toma de de decisão **hoje**
 - **Ajuste contínuo**: conforme os dias passam, você substitui projeções pelo que realmente aconteceu
