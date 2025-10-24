@@ -1,2 +1,11 @@
-<h1>CashFlow#index</h1>
-<p>Find me in app/views/cash_flow/index.html.erb</p>
+<h1>Cash flow</h1>
+<% @cash_flow_days.each do |day| %>
+  <div>
+    <p>
+      Day: <%= day[:date]%> | Income: <%= day[:income]%>
+      | Fixed Expense: <%= day[:fixed_expense]%>
+      | Daily Expense: <%= day[:daily_expense]%>
+      | Balance: <%= day[:balance]%>
+    </p>
+  </div>
+<% end %>

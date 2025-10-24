@@ -2,3 +2,4 @@
 
 one:
   daily_expense_estimate: 60
+  initial_balance: 0

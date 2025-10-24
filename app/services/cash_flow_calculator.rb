@@ -6,7 +6,7 @@ class CashFlowCalculator
 
   def call
     all_days = []
-    setting = Preference.first_or_create!(initial_balance: 0, daily_expense_estimate: 60)
+    setting = Preference.first_or_create!(initial_balance: 0, daily_expense_estimate: 0)
     recurring_rules = RecurringRule.all
     all_transactions = Transaction.where(date: @start_date..@end_date)
     transactions_grouped_by_date = all_transactions.group_by(&:date)
@@ -23,7 +23,7 @@ class CashFlowCalculator
         if transaction.kind == "income"
           total_income += transaction.amount
         elsif transaction.kind == "fixed_expense"
-          total_fixed_expense += transaction.amount
+          total_fixed_expense += transaction
         elsif transaction.kind == "daily_expense"
           total_daily_expense += transaction.amount
         end
@@ -46,12 +46,13 @@ class CashFlowCalculator
       current_balance += daily_balance
 
       all_days << {
-        date: current_date,
-        income: total_income,
-        fixed_expense: total_fixed_expense,
-        daily_expense: total_daily_expense,
-        balance: current_balance
+      date: current_date,
+      income: total_income,
+      fixed_expense: total_fixed_expense,
+      daily_expense: total_daily_expense,
+      balance: current_balance
       }
     end
+    all_days
   end
 end
