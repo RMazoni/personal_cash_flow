@@ -1,0 +1,22 @@
+<%= link_to "Cash flow", cash_flow_path %>
+<h1>Settings</h1>
+<h2>Preferences</h2>
+
+<%= form_with model: @preference, url: preference_path(@preference), method: :patch do |form| %>
+  <%= form.label :initial_balance %>
+  <%= form.number_field :initial_balance %>
+  <%= form.label :daily_expense_estimate %>
+  <%= form.number_field :daily_expense_estimate %>
+  <%= form.submit %>
+<% end %>
+
+<h2>Fixed Income and Expenses</h2>
+<% @recurring_rules.each do |rule| %>
+  <div>
+    <p>Description: <%= rule[:description] %></p>
+    <p>Amount: <%= rule[:amount] %></p>
+    <p>Day: <%= rule[:month_day] %></p>
+  </div>
+<% end %>
+
+

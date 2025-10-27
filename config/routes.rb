@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :preference, only: [ :update ]
+  get "settings/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "/cash_flow", to: "cash_flow#index"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
