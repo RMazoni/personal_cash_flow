@@ -11,11 +11,14 @@
 <% end %>
 
 <h2>Fixed Income and Expenses</h2>
+<%= link_to "New recurring transaction", new_recurring_rule_path %>
 <% @recurring_rules.each do |rule| %>
   <div>
     <p>Description: <%= rule[:description] %></p>
     <p>Amount: <%= rule[:amount] %></p>
     <p>Day: <%= rule[:month_day] %></p>
+    <%= link_to "Edit", edit_recurring_rule_path(rule) %>
+    <%= button_to "Delete", recurring_rule_path(rule), method: :delete %>
   </div>
 <% end %>
 

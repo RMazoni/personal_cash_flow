@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :recurring_rules, only: [ :new, :create, :edit, :update, :destroy ]
   resource :preference, only: [ :update ]
   get "settings/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

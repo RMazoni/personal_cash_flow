@@ -1,5 +1,4 @@
 class PreferencesController < ApplicationController
-
   def update
     preference = Preference.first_or_create!
     preference.update(preference_params)

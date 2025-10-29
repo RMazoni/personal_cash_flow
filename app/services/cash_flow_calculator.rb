@@ -22,9 +22,9 @@ class CashFlowCalculator
       current_day_transactions_list.each do |transaction|
         if transaction.kind == "income"
           total_income += transaction.amount
-        elsif transaction.kind == "fixed_expense"
+        elsif transaction.kind == "Fixed Expense"
           total_fixed_expense += transaction
-        elsif transaction.kind == "daily_expense"
+        elsif transaction.kind == "Daily Expense"
           total_daily_expense += transaction.amount
         end
       end
@@ -35,9 +35,9 @@ class CashFlowCalculator
 
       recurring_rules.each do |rule|
         if rule.month_day == current_date.day
-          if rule.kind == "fixed_income"
+          if rule.kind == "Fixed Income"
             total_income += rule.amount
-          elsif rule.kind == "fixed_expense"
+          elsif rule.kind == "Fixed Expense"
             total_fixed_expense += rule.amount
           end
         end
